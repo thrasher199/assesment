@@ -13,7 +13,7 @@ Example: Postman/Client &gt; Your API Endpoint &gt; calling another api
 
 Component Use
 ==============
-Spring Boot Rest
-MSSSQL
-Docker
-TestC Container
+1. Spring Boot Rest
+2. MSSSQL
+3. Docker
+4. Test Container
