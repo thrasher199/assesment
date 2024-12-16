@@ -1,0 +1,235 @@
+{
+	"info": {
+		"name": "Book Store API",
+		"description": "Collection for testing Book Store REST API endpoints including external OpenLibrary integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publishers",
+			"item": [
+				{
+					"name": "Get All Publishers",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers?page=0&size=10&sortBy=name&direction=asc",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "publishers"],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "direction",
+									"value": "asc"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Publisher by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "publishers", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Publisher",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "publishers"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Publisher\",\n    \"address\": \"123 Publishing Street\",\n    \"email\": \"contact@newpublisher.com\",\n    \"phone\": \"+1-555-0123\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Publisher",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "publishers", "1"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Publisher Name\",\n    \"address\": \"456 Updated Street\",\n    \"email\": \"updated@publisher.com\",\n    \"phone\": \"+1-555-9876\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Publisher",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "publishers", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/books?page=0&size=10&sortBy=title&direction=asc",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "books"],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "title"
+								},
+								{
+									"key": "direction",
+									"value": "asc"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/books/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "books", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{baseUrl}}/api/books",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "books"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Book\",\n    \"isbn\": \"9780123456789\",\n    \"author\": \"John Doe\",\n    \"pulicationYear\": 2024,\n    \"price\": 29.99,\n    \"publisher\": {\n        \"id\": 1\n    }\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"url": {
+							"raw": "{{baseUrl}}/api/books/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "books", "1"]
+						},
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Book Title\",\n    \"isbn\": \"9780123456789\",\n    \"author\": \"Jane Smith\",\n    \"pulicationYear\": 2024,\n    \"price\": 39.99\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/books/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "books", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "External Book API",
+			"item": [
+				{
+					"name": "Search Book by Title",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/external/books/search?title=Clean Code",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "external", "books", "search"],
+							"query": [
+								{
+									"key": "title",
+									"value": "Clean Code"
+								}
+							]
+						},
+						"description": "Searches for books in OpenLibrary API by title"
+					}
+				}
+			],
+			"description": "Integration with OpenLibrary external API for retrieving additional book information"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
