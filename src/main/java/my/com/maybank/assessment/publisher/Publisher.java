@@ -1,5 +1,6 @@
 package my.com.maybank.assessment.publisher;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import my.com.maybank.assessment.book.Book;
@@ -19,6 +20,7 @@ public class Publisher {
     private Long id;
 
     @OneToMany(mappedBy = "publisher", orphanRemoval = true)
+    @JsonIgnoreProperties("publisher")
     private Set<Book> books = new LinkedHashSet<>();
 
     @Column(name = "name", nullable = false)
